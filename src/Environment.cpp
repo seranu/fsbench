@@ -17,4 +17,28 @@ std::string TPlatformToString(TPlatform aPlatform) {
   return platformToStringMap[key];
 }
 
+Environment::Environment() : iCurrentPlatform(TPlatform::Invalid) {
+#if defined(__linux__)
+#if defined(__ANDROID__)
+  iCurrentPlatform = TPlatform::Android;
+#else
+  iCurrentPlatform = TPlatform::Linux;
+#endif
+#elif defined(_WIN32)
+// todo: is _WIN32 defined for WINCE?
+#if defined(_WIN32_WCE)
+  iCurrentPlatform = TPlatform::WINCE;
+#else
+  iCurrentPlatform = TPlatform::Windows;
+#endif
+#elif defined(__APPLE__) && defined(__MACH__)
+  iCurrentPlatform = TPlatform::OSX;
+#elif defined(__QNX__)
+  iCurrentPlatform = TPlatform::QNX;
+#endif
+  assert(iCurrentPlatform != TPlatform::Invalid && "Warning: Invalid platform");
+}
+
+TPlatform Environment::CurrentPlatform() {}
+
 }  // namespace NFSBenchmark
