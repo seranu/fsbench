@@ -39,6 +39,4 @@ Environment::Environment() : iCurrentPlatform(TPlatform::Invalid) {
   assert(iCurrentPlatform != TPlatform::Invalid && "Warning: Invalid platform");
 }
 
-TPlatform Environment::CurrentPlatform() {}
-
 }  // namespace NFSBenchmark

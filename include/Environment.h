@@ -19,12 +19,17 @@ inline std::ostream& operator<<(std::ostream& aOut, TPlatform aPlatform) {
 
 class Environment {
  public:
-  const Environment& GetInstance() { return iInstance; }
-  TPlatform CurrentPlatform() { return iCurrentPlatform; }
+  static const Environment& GetInstance() {
+    static Environment instance;
+    return instance;
+  }
+
+  inline TPlatform CurrentPlatform() const { return iCurrentPlatform; }
+
+  Environment(Environment const&) = delete;
+  void operator=(Environment const&) = delete;
 
  private:
-  static Environment iInstance;
-
   TPlatform iCurrentPlatform;
   Environment();
 };
