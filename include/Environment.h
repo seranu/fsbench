@@ -13,7 +13,7 @@ enum class TPlatform { Linux, Windows, WINCE, OSX, Android, QNX, Invalid };
 
 std::string TPlatformToString(TPlatform aPlatform);
 
-std::ostream& operator<<(std::ostream& aOut, TPlatform aPlatform) {
+inline std::ostream& operator<<(std::ostream& aOut, TPlatform aPlatform) {
   return aOut << TPlatformToString(aPlatform);
 }
 
