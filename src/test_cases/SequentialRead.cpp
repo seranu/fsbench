@@ -15,7 +15,7 @@ void SequentialRead::Report() {
 
 }
 
-bool SequentialRead::IsAvailable() {
+bool SequentialRead::IsAvailable(const Environment& aEnvironment) {
 
 }
 
